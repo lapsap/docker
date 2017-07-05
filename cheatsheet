@@ -1,0 +1,20 @@
+#setting up kubernetes clusters
+#Azure create resource group
+az group create --name pool2 --location southeastasia
+#create the cluster
+az acs create --orchestrator-type=kubernetes --resource-group pool2 --name=k8s --agent-count=2 --master-count=3 --agent-vm-size=Standard_L4s
+#add master to local computer (to use kubectl)
+az acs kubernetes get-credentials --resource-group=pool2 --name k8s
+
+#setting up container services
+#add pods
+kubectl run lanode --image lapsap/demo
+#export to public
+kubectl expose deployments lanode --port=80 --type=LoadBalancer
+
+#cheat sheets
+az acs scale -g pool2 -n k8s --new-agent-count 4
+kubectl get all
+kubectl get nodes
+# get list of slave vm option 
+az vm list-sizes --location=southeastasia
