@@ -18,3 +18,6 @@ kubectl get all
 kubectl get nodes
 # get list of slave vm option 
 az vm list-sizes --location=southeastasia
+# kubernetes internal management site
+# first type the command, "kubectl proxy --port=8000"
+# then go to this link "http://localhost:8000/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#!/workload?namespace=default"

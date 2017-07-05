@@ -8,5 +8,6 @@ RUN npm install pg
 COPY main.js /main.js
 COPY package.json /package.json
 COPY files/db_read.js /files/db_read.js
+RUN apt-get clean
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/npm", "start"]
