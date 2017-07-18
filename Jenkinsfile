@@ -12,7 +12,7 @@ node {
 		 * docker build on the command line */
 		
 		sh 'whoami'
-		app = docker.build("getintodevops/hellonode")
+		app = docker.build("lapsap/demo")
 	}
 
 	stage('Test image') {
